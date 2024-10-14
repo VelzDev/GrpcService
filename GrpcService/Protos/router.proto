@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService";
+
+package router;
+
+service Route {
+  rpc CalculateRoute (RouteRequest) returns (RouteResponse);
+}
+
+// Определение сообщения для запроса маршрута
+message RouteRequest {
+  string origin = 1;
+  string destination = 2;
+  double cargo_weight = 3;
+}
+
+// Определение сообщения для ответа
+message RouteResponse {
+  string route = 1;
+  double cost = 2;
+  double estimated_time = 3;
+}
